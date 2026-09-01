@@ -1,0 +1,30 @@
+name: Build and Security Check
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build Application Image
+    runs-on: ubuntu-latest
+
+    steps:
+
+      # 1. Checkout DevOps repository
+      - name: Checkout DevOps repository
+        uses: actions/checkout@v4
+
+      # 2. Checkout application repository
+      - name: Checkout application repository
+        uses: actions/checkout@v4
+        with:
+          repository: Azmeth23/project-starwing-dev
+          path: application
+
+      # 3. Build Docker image
+      - name: Build Docker image
+        run: |
+          docker build \
+            -f Dockerfile \
+            -t devops-kickstarter:1.0 \
+            application
