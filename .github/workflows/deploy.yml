@@ -43,4 +43,4 @@ jobs:
 
       - name: Action pushing the image to Docker Hub
         run: |
-          docker push azmeth07/devops-learning-app:1.0
+          docker push azmeth07/devops-kickstarter:1.0
