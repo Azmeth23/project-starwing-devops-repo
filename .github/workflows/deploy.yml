@@ -19,6 +19,17 @@ jobs:
           repository: Azmeth23/project-starwing-devops-repo 
           path: application
 
+      - name: Check application files
+        run: |
+          echo "Current directory:"
+          pwd
+          echo "Workspace:"
+          ls -la
+          echo "Application directory:"
+          ls -la application
+          echo "Application files:"
+          find application -maxdepth 2 -type f
+
       - name: Build Docker image
         run: |
           docker build \
