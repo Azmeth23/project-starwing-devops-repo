@@ -10,21 +10,27 @@ jobs:
 
     steps:
 
-      # 1. Checkout DevOps repository
       - name: Checkout DevOps repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
-      # 2. Checkout application repository
       - name: Checkout application repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
-          repository: Azmeth23/project-starwing-dev
+          repository: Azmeth23/project-starwing-devops-repo 
           path: application
 
-      # 3. Build Docker image
       - name: Build Docker image
         run: |
           docker build \
             -f Dockerfile \
             -t devops-kickstarter:1.0 \
             application
+
+      - name: Scan Docker image with Trivy
+        uses: aquasecurity/trivy-action@v0.28.0
+        with:
+          image-ref: devops-kickstarter:1.0
+          format: table
+          exit-code: '1'
+          ignore-unfixed: true
+          severity: CRITICAL,HIGH
