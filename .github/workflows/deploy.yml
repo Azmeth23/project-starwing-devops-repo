@@ -34,13 +34,13 @@ jobs:
         run: |
           docker build \
            -f Dockerfile \
-           -t azmeth07/devops-kickstarter:1.0 \
+           -t azmeth07/devops-kickstarter:9.0 \
            application
 
       - name: Scan Docker image with Trivy
         uses: aquasecurity/trivy-action@v0.36.0
         with:
-          image-ref: azmeth07/devops-kickstarter:1.0
+          image-ref: azmeth07/devops-kickstarter:9.0
           format: table
           exit-code: '1'
           ignore-unfixed: true
@@ -54,4 +54,4 @@ jobs:
 
       - name: Push image to Docker Hub
         run: |
-          docker push azmeth07/devops-kickstarter:1.0
+          docker push azmeth07/devops-kickstarter:9.0
