@@ -34,7 +34,7 @@ jobs:
         run: |
           docker build \
             -f Dockerfile \
-            -t devops-kickstarter:1.0 \
+            -t azmeth07/devops-kickstarter:1.0 \
             application
 
       - name: Scan Docker image with Trivy
