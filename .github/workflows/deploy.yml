@@ -16,7 +16,7 @@ jobs:
       - name: Checkout application repository
         uses: actions/checkout@v5
         with:
-          repository: Azmeth23/project-starwing-devops-repo 
+          repository: Azmeth23/project-starwing-dev 
           path: application
 
       - name: Check application files
