@@ -33,14 +33,14 @@ jobs:
       - name: Build Docker image
         run: |
           docker build \
-            -f Dockerfile \
-            -t azmeth07/devops-kickstarter:1.0 \
-            application
+           -f Dockerfile \
+           -t azmeth07/devops-kickstarter:1.0 \
+           application
 
       - name: Scan Docker image with Trivy
         uses: aquasecurity/trivy-action@v0.36.0
         with:
-          image-ref: devops-kickstarter:1.0
+          image-ref: azmeth07/devops-kickstarter:1.0
           format: table
           exit-code: '1'
           ignore-unfixed: true
@@ -52,6 +52,6 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Action pushing the image to Docker Hub
+      - name: Push image to Docker Hub
         run: |
           docker push azmeth07/devops-kickstarter:1.0
